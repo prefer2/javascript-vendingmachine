@@ -15,8 +15,8 @@ export interface VendingMachineState {
 }
 export default class VendingMachine {
     state: VendingMachineState;
-    constructor(initItems: Item[], initCoins: Coins);
-    init(initItems: Item[], initCoins: Coins): void;
+    constructor(initialItems: Item[], initialCoins: Coins);
+    init(initialItems: Item[], initialCoins: Coins): void;
     useStore(callback: Function): any;
     addItem(item: Item): void;
     updateItem(name: string, updatedItem: Item): void;

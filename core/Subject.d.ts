@@ -15,9 +15,9 @@ export default class Subject {
     constructor(key: string, initValue: any, checker: symbol);
     get(): any;
     set(newValue: any): void;
-    observe(observer: Observer): void;
-    unobserve(observer: Observer): void;
-    checkUpdated(): void;
+    addObserver(observer: Observer): void;
+    deleteObserver(observer: Observer): void;
+    detectUpdate(): void;
     notify(): void;
     toString(): string;
 }
