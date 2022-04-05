@@ -4,19 +4,19 @@ export interface Item {
     quantity: number;
 }
 export interface Coins {
-    10: number;
-    50: number;
-    100: number;
     500: number;
+    100: number;
+    50: number;
+    10: number;
 }
 export interface VendingMachineState {
     items: Item[];
     coins: Coins;
+    purchaseMoney: number;
 }
-export default class VendingMachine {
+declare class VendingMachine {
     state: VendingMachineState;
-    constructor(initialItems: Item[], initialCoins: Coins);
-    init(initialItems: Item[], initialCoins: Coins): void;
+    constructor(initialItems: Item[], initialCoins: Coins, initialMoney: number);
     useStore(callback: Function): any;
     addItem(item: Item): void;
     updateItem(name: string, updatedItem: Item): void;
@@ -24,5 +24,9 @@ export default class VendingMachine {
     findItem(name: string): Item | null;
     addCoin(amount: number): void;
     getTotalMoney(): number;
+    addPurchaseMoney(money: number): void;
+    buyItem(nameId: string): void;
+    returnChange(): Coins;
 }
 export declare const vendingMachine: VendingMachine;
+export {};
