@@ -605,7 +605,7 @@ var GlobalStore = /*#__PURE__*/function () {
 
 
 var userData = (0,_utils_storageUtil__WEBPACK_IMPORTED_MODULE_3__.getData)('user');
-var initialLocation = window.location.pathname.split('/').pop();
+var initialLocation = window.location.pathname;
 var globalStore = new GlobalStore({
   isLoggedIn: !!userData,
   userData: userData === null || userData === void 0 ? void 0 : userData.user
@@ -828,7 +828,7 @@ var VendingMachine = /*#__PURE__*/function (_Component) {
           isloggedin = _this$props.isloggedin,
           username = _this$props.username;
       var login = JSON.parse(isloggedin);
-      var location = window.location.pathname.split('/').pop();
+      var location = window.location.pathname;
       var vendingMachinePage;
 
       switch (location) {
