@@ -605,7 +605,7 @@ var GlobalStore = /*#__PURE__*/function () {
 
 
 var userData = (0,_utils_storageUtil__WEBPACK_IMPORTED_MODULE_3__.getData)('user');
-var initialLocation = window.location.pathname;
+var initialLocation = window.location.pathname.split('/').pop();
 var globalStore = new GlobalStore({
   isLoggedIn: !!userData,
   userData: userData === null || userData === void 0 ? void 0 : userData.user
@@ -828,7 +828,7 @@ var VendingMachine = /*#__PURE__*/function (_Component) {
           isloggedin = _this$props.isloggedin,
           username = _this$props.username;
       var login = JSON.parse(isloggedin);
-      var location = window.location.pathname;
+      var location = window.location.pathname.split('/').pop();
       var vendingMachinePage;
 
       switch (location) {
@@ -1470,6 +1470,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_validate__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../auth/validate */ "./src/auth/validate.js");
 /* harmony import */ var _utils_domUtil__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/domUtil */ "./src/utils/domUtil.ts");
 /* harmony import */ var _constant_constant__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../constant/constant */ "./src/constant/constant.js");
+/* harmony import */ var _domains_GlobalStore__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../domains/GlobalStore */ "./src/domains/GlobalStore.js");
 
 
 
@@ -1481,6 +1482,7 @@ __webpack_require__.r(__webpack_exports__);
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
 
 
 
@@ -1533,7 +1535,7 @@ var UserEditPage = /*#__PURE__*/function (_Component) {
 
       this.addEvent('submit', '#user-edit-form', /*#__PURE__*/function () {
         var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6___default().mark(function _callee(event) {
-          var _event$target$element, userName, password, passwordCheck, userInfo, loginResponse;
+          var _event$target$element, userName, password, passwordCheck, userInfo, loginResponse, to, state;
 
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6___default().wrap(function _callee$(_context) {
             while (1) {
@@ -1579,9 +1581,14 @@ var UserEditPage = /*#__PURE__*/function (_Component) {
 
                 case 14:
                   (0,_utils_storageUtil__WEBPACK_IMPORTED_MODULE_8__.setData)('user', loginResponse);
-                  window.location.href = 'http://localhost:9000/';
+                  to = '/';
+                  state = {
+                    path: to
+                  };
+                  window.history.pushState(state, '', to);
+                  _domains_GlobalStore__WEBPACK_IMPORTED_MODULE_14__.globalStore.login(response);
 
-                case 16:
+                case 19:
                 case "end":
                   return _context.stop();
               }
@@ -1595,6 +1602,7 @@ var UserEditPage = /*#__PURE__*/function (_Component) {
       }());
       this.addEvent('click', '#withdraw-button', /*#__PURE__*/function () {
         var _ref3 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6___default().mark(function _callee2(event) {
+          var to, state;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6___default().wrap(function _callee2$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
@@ -1605,9 +1613,14 @@ var UserEditPage = /*#__PURE__*/function (_Component) {
 
                 case 3:
                   localStorage.removeItem('user');
-                  window.location.href = 'http://localhost:9000/';
+                  to = '/';
+                  state = {
+                    path: to
+                  };
+                  window.history.pushState(state, '', to);
+                  _domains_GlobalStore__WEBPACK_IMPORTED_MODULE_14__.globalStore.login(response);
 
-                case 5:
+                case 8:
                 case "end":
                   return _context2.stop();
               }
@@ -1779,6 +1792,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth_validate__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../auth/validate */ "./src/auth/validate.js");
 /* harmony import */ var _utils_domUtil__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/domUtil */ "./src/utils/domUtil.ts");
 /* harmony import */ var _constant_constant__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../constant/constant */ "./src/constant/constant.js");
+/* harmony import */ var _domains_GlobalStore__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../domains/GlobalStore */ "./src/domains/GlobalStore.js");
 
 
 
@@ -1790,6 +1804,7 @@ __webpack_require__.r(__webpack_exports__);
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = (0,_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return (0,_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
 
 
 
@@ -1826,7 +1841,7 @@ var UserRegisterPage = /*#__PURE__*/function (_Component) {
     value: function setEvent() {
       this.addEvent('submit', '#register-form', /*#__PURE__*/function () {
         var _ref = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6___default().mark(function _callee(event) {
-          var _event$target$element, email, userName, password, passwordCheck, response;
+          var _event$target$element, email, userName, password, passwordCheck, response, to, state;
 
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6___default().wrap(function _callee$(_context) {
             while (1) {
@@ -1864,9 +1879,14 @@ var UserRegisterPage = /*#__PURE__*/function (_Component) {
 
                 case 11:
                   (0,_utils_storageUtil__WEBPACK_IMPORTED_MODULE_9__.setData)('user', response);
-                  window.location.href = 'http://localhost:9000/';
+                  to = '/';
+                  state = {
+                    path: to
+                  };
+                  window.history.pushState(state, '', to);
+                  _domains_GlobalStore__WEBPACK_IMPORTED_MODULE_13__.globalStore.login(response);
 
-                case 13:
+                case 16:
                 case "end":
                   return _context.stop();
               }
