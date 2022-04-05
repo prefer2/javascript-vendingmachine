@@ -34,7 +34,7 @@ var _this = undefined;
 
 
 
-var baseURL = 'https://dory-vending-machine.herokuapp.com/';
+var baseURL = 'https://dory-vending-machine.herokuapp.com';
 var editUser = /*#__PURE__*/function () {
   var _ref = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(id, userInfo) {
     return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {
@@ -114,7 +114,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var baseURL = 'https://dory-vending-machine.herokuapp.com/';
+var baseURL = 'https://dory-vending-machine.herokuapp.com';
 var loginUser = /*#__PURE__*/function () {
   var _ref2 = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(_ref) {
     var email, password, response;
@@ -175,7 +175,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var baseURL = 'https://dory-vending-machine.herokuapp.com/';
+var baseURL = 'https://dory-vending-machine.herokuapp.com';
 var registerUser = /*#__PURE__*/function () {
   var _ref = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(userInfo) {
     var response;
@@ -754,6 +754,7 @@ var Router = /*#__PURE__*/function (_Component) {
         return state.currentLocation;
       });
       var routes = this.state.routes;
+      console.log(curLocation);
       if (curLocation === '/change-charge' || curLocation === '/item-management') curLocation = '/';
       var component = routes[curLocation] || routes['*'];
       this.clearDOM();
