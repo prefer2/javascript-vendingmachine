@@ -611,6 +611,7 @@ var VendingMachine = /*#__PURE__*/function (_Component) {
         _domains_GlobalStore__WEBPACK_IMPORTED_MODULE_11__.globalStore.changeLocation(to);
       });
       this.addEvent('click', '#logout', function () {
+        window.location.pathname = '/';
         _domains_GlobalStore__WEBPACK_IMPORTED_MODULE_11__.globalStore.logout();
       });
       this.addEvent('click', '#user-edit', function (event) {
