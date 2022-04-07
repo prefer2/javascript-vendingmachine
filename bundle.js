@@ -30,6 +30,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "MONEY": () => (/* binding */ MONEY),
 /* harmony export */   "NAME": () => (/* binding */ NAME),
 /* harmony export */   "PASSWORD": () => (/* binding */ PASSWORD),
+/* harmony export */   "COOKIE_KEY": () => (/* binding */ COOKIE_KEY),
 /* harmony export */   "LOCALSTORAGE_KEY": () => (/* binding */ LOCALSTORAGE_KEY),
 /* harmony export */   "ERROR_MESSAGE": () => (/* binding */ ERROR_MESSAGE),
 /* harmony export */   "CONFIRM_MESSAGE": () => (/* binding */ CONFIRM_MESSAGE)
@@ -93,7 +94,10 @@ var NAME = {
   MAX_LENGTH: 6
 };
 var PASSWORD = {
-  PATTERN: "^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^*+=-]|[A-Z]).{8,}"
+  PATTERN: "^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{8,16}"
+};
+var COOKIE_KEY = {
+  USER: 'user'
 };
 var LOCALSTORAGE_KEY = {
   ITEM: 'items',
@@ -131,8 +135,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Component)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
@@ -140,6 +144,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ "./node_modules/@babel/runtime/helpers/esm/wrapNativeSuper.js");
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _componentMixin__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./componentMixin */ "./src/js/core/componentMixin.js");
+/* harmony import */ var _Subject__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Subject */ "./src/js/core/Subject.ts");
 
 
 
@@ -155,6 +160,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
+
 var Component = /*#__PURE__*/function (_HTMLElement) {
   (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(Component, _HTMLElement);
 
@@ -163,7 +169,7 @@ var Component = /*#__PURE__*/function (_HTMLElement) {
   function Component() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Component);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, Component);
 
     _this = _super.call(this);
 
@@ -180,7 +186,19 @@ var Component = /*#__PURE__*/function (_HTMLElement) {
     return _this;
   }
 
-  return (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_0__["default"])(Component);
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Component, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      _Subject__WEBPACK_IMPORTED_MODULE_9__["default"].observe(this);
+    }
+  }, {
+    key: "disconnectedCallback",
+    value: function disconnectedCallback() {
+      _Subject__WEBPACK_IMPORTED_MODULE_9__["default"].unobserve(this);
+    }
+  }]);
+
+  return Component;
 }( /*#__PURE__*/(0,_babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_6__["default"])(HTMLElement));
 
 
@@ -199,8 +217,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ TableRow)
 /* harmony export */ });
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/esm/createClass.js");
 /* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js");
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/esm/inherits.js");
 /* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js");
@@ -208,6 +226,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime/helpers/wrapNativeSuper */ "./node_modules/@babel/runtime/helpers/esm/wrapNativeSuper.js");
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
 /* harmony import */ var _componentMixin__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./componentMixin */ "./src/js/core/componentMixin.js");
+/* harmony import */ var _Subject__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Subject */ "./src/js/core/Subject.ts");
 
 
 
@@ -223,6 +242,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 
 
+
 var TableRow = /*#__PURE__*/function (_HTMLTableRowElement) {
   (0,_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(TableRow, _HTMLTableRowElement);
 
@@ -231,7 +251,7 @@ var TableRow = /*#__PURE__*/function (_HTMLTableRowElement) {
   function TableRow() {
     var _this;
 
-    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, TableRow);
+    (0,_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__["default"])(this, TableRow);
 
     _this = _super.call(this);
 
@@ -248,7 +268,19 @@ var TableRow = /*#__PURE__*/function (_HTMLTableRowElement) {
     return _this;
   }
 
-  return (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_0__["default"])(TableRow);
+  (0,_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(TableRow, [{
+    key: "connectedCallback",
+    value: function connectedCallback() {
+      _Subject__WEBPACK_IMPORTED_MODULE_9__["default"].observe(this);
+    }
+  }, {
+    key: "disconnectedCallback",
+    value: function disconnectedCallback() {
+      _Subject__WEBPACK_IMPORTED_MODULE_9__["default"].unobserve(this);
+    }
+  }]);
+
+  return TableRow;
 }( /*#__PURE__*/(0,_babel_runtime_helpers_wrapNativeSuper__WEBPACK_IMPORTED_MODULE_6__["default"])(HTMLTableRowElement));
 
 
@@ -268,8 +300,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "componentMixin": () => (/* binding */ componentMixin)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
-/* harmony import */ var _Subject__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Subject */ "./src/js/core/Subject.ts");
-/* harmony import */ var _utils_commons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/commons */ "./src/js/utils/commons.ts");
+/* harmony import */ var _utils_commons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/commons */ "./src/js/utils/commons.ts");
 
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
@@ -277,14 +308,7 @@ function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (O
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0,_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 
-
 var componentMixin = {
-  connectedCallback: function connectedCallback() {
-    _Subject__WEBPACK_IMPORTED_MODULE_1__["default"].observe(this);
-  },
-  disconnectedCallback: function disconnectedCallback() {
-    _Subject__WEBPACK_IMPORTED_MODULE_1__["default"].unobserve(this);
-  },
   setProps: function setProps() {
     var _this = this;
 
@@ -308,7 +332,7 @@ var componentMixin = {
   beforeRender: function beforeRender() {},
   afterRender: function afterRender() {},
   setState: function setState(newState) {
-    if ((0,_utils_commons__WEBPACK_IMPORTED_MODULE_2__.deepEqual)(this.state, newState)) return;
+    if ((0,_utils_commons__WEBPACK_IMPORTED_MODULE_1__.deepEqual)(this.state, newState)) return;
     this.state = _objectSpread(_objectSpread({}, this.state), newState);
     this.render();
   },
@@ -770,10 +794,10 @@ var NavBar = /*#__PURE__*/function (_Component) {
     key: "template",
     value: function template() {
       var location = this.props.location; // 왜 재랜더링 되는거지....ㅠ
-      // 이전 location 값이 한 번 더 랜더링됨. 근데 또 template에는 영향이 없음. 뭐야.
+      // 이전 location 값이 한 번 더 랜더링됨. 근데 또 template에는 영향이 없음.
       // delayed된 이전 값....?
 
-      console.log('!!!!!!!', this.props, location);
+      console.log('!!!!!!!', this.props);
       return "\n      <a\n        id=\"item-management\"\n        class=\"nav-button styled-button ".concat(location === _constant__WEBPACK_IMPORTED_MODULE_6__.PAGE.ITEM_MANAGEMENT.PATH ? 'selected' : '', "\"\n      >\n        ").concat(_constant__WEBPACK_IMPORTED_MODULE_6__.PAGE.ITEM_MANAGEMENT.TITLE, "\n      </a>\n      <a\n        id=\"change-charge\"\n        class=\"nav-button styled-button ").concat(location === _constant__WEBPACK_IMPORTED_MODULE_6__.PAGE.CHANGE_CHARGE.PATH ? 'selected' : '', "\"\n      >\n        ").concat(_constant__WEBPACK_IMPORTED_MODULE_6__.PAGE.CHANGE_CHARGE.TITLE, "\n      </a>\n      <a\n        id=\"item-purchase\"\n        class=\"nav-button styled-button ").concat(location === _constant__WEBPACK_IMPORTED_MODULE_6__.PAGE.ITEM_PURCHASE.PATH ? 'selected' : '', "\"\n      >\n        ").concat(_constant__WEBPACK_IMPORTED_MODULE_6__.PAGE.ITEM_PURCHASE.TITLE, "\n      </a>\n    ");
     }
   }, {
@@ -1618,11 +1642,13 @@ var UserRegisterPage = /*#__PURE__*/function (_Component) {
         return "<p>\uC774\uBBF8 \uB85C\uADF8\uC778 \uD558\uC168\uC2B5\uB2C8\uB2E4</p>";
       }
 
-      return "\n      <header>\n        <h1 class=\"title\">\uD68C\uC6D0\uAC00\uC785</h1>\n      </header>\n      <div>\n        <form id=\"register-form\" class=\"register-form\">\n          <label for=\"email\">\uC774\uBA54\uC77C</label>\n          <input type=\"email\" class=\"register-input styled-input\" placeholder=\"\uC774\uBA54\uC77C \uC8FC\uC18C\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\" name=\"email\" required>\n          <label for=\"user-name\">\uC774\uB984</label>\n          <input type=\"text\" class=\"register-input styled-input\" placeholder=\"\uC774\uB984\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694\" name=\"userName\" minlength=".concat(_constant__WEBPACK_IMPORTED_MODULE_11__.NAME.MIN_LENGTH, " maxlength=").concat(_constant__WEBPACK_IMPORTED_MODULE_11__.NAME.MAX_LENGTH, " required>\n          <label for=\"password\">\uBE44\uBC00\uBC88\uD638</label>\n          <input type=\"password\" class=\"register-input styled-input\" placeholder=\"\uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\" name=\"password\" pattern=").concat(_constant__WEBPACK_IMPORTED_MODULE_11__.PASSWORD.PATTERN, " required>\n          <label for=\"password-check\">\uBE44\uBC00\uBC88\uD638 \uD655\uC778</label>\n          <input type=\"password\" class=\"register-input styled-input\" placeholder=\"\uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\" name=\"passwordCheck\" pattern=").concat(_constant__WEBPACK_IMPORTED_MODULE_11__.PASSWORD.PATTERN, " required>\n          <button type=\"submit\" class=\"register-button styled-button emphasized\">\uD655\uC778</button>\n        </form>\n      </div>\n      <div class=\"snackbar\"></div>\n    ");
+      return "\n      <header>\n        <h1 class=\"title\">\uD68C\uC6D0\uAC00\uC785</h1>\n      </header>\n      <section>\n        <form id=\"register-form\" class=\"register-form\">\n          <label for=\"email\">\uC774\uBA54\uC77C</label>\n          <input type=\"email\" class=\"register-input styled-input\" placeholder=\"\uC774\uBA54\uC77C \uC8FC\uC18C\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\" name=\"email\" required>\n          <label for=\"user-name\">\uC774\uB984</label>\n          <input type=\"text\" class=\"register-input styled-input\" placeholder=\"\uC774\uB984\uC744 \uC785\uB825\uD574\uC8FC\uC138\uC694\" name=\"userName\" minlength=".concat(_constant__WEBPACK_IMPORTED_MODULE_11__.NAME.MIN_LENGTH, " maxlength=").concat(_constant__WEBPACK_IMPORTED_MODULE_11__.NAME.MAX_LENGTH, " required>\n          <label for=\"password\">\uBE44\uBC00\uBC88\uD638</label>\n          <input type=\"password\" class=\"register-input styled-input\" placeholder=\"\uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\" name=\"password\" pattern=").concat(_constant__WEBPACK_IMPORTED_MODULE_11__.PASSWORD.PATTERN, " required>\n          <small id=\"validate-password-text\" class=\"input-check-text\" hidden>8~16\uC790 \uC601\uBB38 \uB300 \uC18C\uBB38\uC790, \uC22B\uC790, \uD2B9\uC218\uBB38\uC790\uB97C \uC0AC\uC6A9\uD558\uC138\uC694.</small>\n          <label for=\"password-check\">\uBE44\uBC00\uBC88\uD638 \uD655\uC778</label>\n          <input type=\"password\" class=\"register-input styled-input\" placeholder=\"\uBE44\uBC00\uBC88\uD638\uB97C \uC785\uB825\uD574\uC8FC\uC138\uC694\" name=\"passwordCheck\" pattern=").concat(_constant__WEBPACK_IMPORTED_MODULE_11__.PASSWORD.PATTERN, " required>\n          <small id=\"password-check-text\" class=\"input-check-text\" hidden>\uBE44\uBC00\uBC88\uD638\uAC00 \uC77C\uCE58\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.</small>\n          <button type=\"submit\" class=\"register-button styled-button emphasized\">\uD655\uC778</button>\n        </form>\n      </section>\n      <div class=\"snackbar\"></div>\n    ");
     }
   }, {
     key: "setEvent",
     value: function setEvent() {
+      var _this = this;
+
       this.addEvent('submit', '#register-form', /*#__PURE__*/function () {
         var _ref = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_6___default().mark(function _callee(event) {
           var _event$target$element, email, userName, password, passwordCheck, response, to, state;
@@ -1681,6 +1707,29 @@ var UserRegisterPage = /*#__PURE__*/function (_Component) {
           return _ref.apply(this, arguments);
         };
       }());
+      this.addEvent('keyup', 'input[name=password]', function () {
+        var _this$querySelector = _this.querySelector('input[name=password]'),
+            value = _this$querySelector.value;
+
+        var regex = new RegExp(_constant__WEBPACK_IMPORTED_MODULE_11__.PASSWORD.PATTERN, 'g');
+
+        if (!regex.test(value)) {
+          _this.querySelector('#validate-password-text').hidden = false;
+        } else {
+          _this.querySelector('#validate-password-text').hidden = true;
+        }
+      });
+      this.addEvent('keyup', 'input[name=passwordCheck]', function () {
+        var password = _this.querySelector('input[name=password]').value;
+
+        var passwordCheck = _this.querySelector('input[name=passwordCheck]').value;
+
+        if (password !== passwordCheck) {
+          _this.querySelector('#password-check-text').hidden = false;
+        } else {
+          _this.querySelector('#password-check-text').hidden = true;
+        }
+      });
     }
   }]);
 
@@ -1711,7 +1760,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html {\n  font-family: 'Roboto', sans-serif;\n  font-size: 16px;\n}\n\nbody {\n  background-color: var(--body-background-color);\n  letter-spacing: 0.5px;\n  margin-bottom: 86px;\n}\n\ninput {\n  margin: 0;\n  padding: 0;\n}\n\n.app-container {\n  border: 1px solid var(--app-border-color);\n  border-radius: 4px;\n  background-color: var(--app-background-color);\n  display: flex;\n  flex-direction: column;\n  width: 518px;\n  min-height: 593px;\n  margin: 0 auto;\n  align-items: center;\n  margin-top: 32px;\n  padding: 40px;\n}\n\n.title {\n  font-weight: 600;\n  font-size: 34px;\n  line-height: 36px;\n  margin-bottom: 32px;\n}\n\n.nav-bar {\n  display: flex;\n  flex-direction: row;\n  gap: 4px;\n}\n\n.nav-button {\n  width: 117px;\n  height: 36px;\n}\n\n.styled-button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  outline: none;\n  background: var(--button-background-color);\n  color: var(--button-text-color);\n  cursor: pointer;\n}\n\n.styled-button:hover{\n  background-color: var(--button-hover-color);\n}\n\n.styled-button.selected {\n  background: var(--button-selected-color);\n}\n\n.styled-button.emphasized {\n  background: var(--emphasized-background-color);\n  color: var(--emphasized-text-color);\n}\n\n.styled-button.emphasized:hover {\n  background: var(--emphasized-hover-color);\n}\n\n.page-container {\n  margin-top: 52px;\n}\n\n.page {\n  display: flex;\n  flex-direction: column;\n  gap: 48px;\n}\n\n.description {\n  display: block;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  letter-spacing: 0.5px;\n  margin-bottom: 4px;\n}\n\n.styled-input {\n  font-family: 'Roboto', sans-serif;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  border: 1px solid var(--input-border-color);\n  border-radius: 4px;\n  padding: 3px;\n}\n\n.styled-input::placeholder {\n  color: var(--input-placeholder-color);\n}\n\n.transparent-input {\n  font-family: 'Roboto', sans-serif;\n  font-size: 16px;\n  text-align: center;\n  width: 100%;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  letter-spacing: 0.5px;\n  padding: 0;\n  border: 0;\n}\n\n.table-title {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 20px;\n  line-height: 24px;\n  text-align: center;\n  letter-spacing: 0.15px;\n  margin-bottom: 16px;\n}\n\n.styled-table {\n  width: 100%;\n  border-top: 1px solid var(--table-border-color);\n  border-collapse: collapse;\n  text-align: center;\n}\n\n.no-border-top {\n  border-top: none;\n}\n\n.scrollable {\n  max-height: 225px;\n  overflow-y: auto;\n}\n\n.styled-th {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 16px;\n  line-height: 24px;\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\n.styled-tr {\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\n.styled-td {\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n}\n\n.dropdown {\n  margin-left: auto;\n}\n\n.user-button{\n  right: 0;\n  border: none;\n  background-color: var(--button-selected-color);\n  height: 40px;\n  width: 40px;\n  border-radius: 50%;\n  font-size: 16px;\n}\n\n.dropdown-content {\n  display: none;\n  position: absolute;\n  background-color: var(--body-background-color);\n  min-width: 160px;\n  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);\n  z-index: 1;\n}\n\n.dropdown-content a {\n  color: black;\n  padding: 12px 16px;\n  text-decoration: none;\n  display: block;\n}\n\n.dropdown-content a:hover {background-color: var(--dropdown-background-color);}\n\n.dropdown:hover .dropdown-content {\n  display: block;\n}\n\n.dropdown:hover .user-button {\n  background-color: var(--emphasized-background-color);\n}\n\n.login-button {\n  text-decoration: none; \n  outline: none;\n  background: var(--button-background-color);\n  border-radius: 4px;\n  text-align: center;\n  margin-left: auto;\n  padding: 9px 20px;\n  font-size: 16px;\n}\n\n.snackbar {\n  visibility: hidden;\n  min-width: 250px;\n  margin-left: -125px;\n  background-color: var(--snackbar-background-color);\n  color: var(--snackbar-text-color);\n  text-align: center;\n  border-radius: 2px;\n  padding: 16px;\n  position: fixed;\n  z-index: 1;\n  left: 50%;\n  bottom: 0;\n}\n\n.show {\n  visibility: visible !important;\n  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.7s;\n  animation: fadein 0.5s, fadeout 0.5s 2.7s;\n}\n\n@-webkit-keyframes fadein {\n  from {\n    bottom: 0;\n    opacity: 0;\n  }\n  to {\n    bottom: 30px;\n    opacity: 1;\n  }\n}\n\n@keyframes fadein {\n  from {\n    bottom: 0;\n    opacity: 0;\n  }\n  to {\n    bottom: 0;\n    opacity: 1;\n  }\n}\n\n@-webkit-keyframes fadeout {\n  from {\n    bottom: 0;\n    opacity: 1;\n  }\n  to {\n    bottom: -30px;\n    opacity: 0;\n  }\n}\n\n@keyframes fadeout {\n  from {\n    bottom: 0;\n    opacity: 1;\n  }\n  to {\n    bottom: -30px;\n    opacity: 0;\n  }\n}", "",{"version":3,"sources":["webpack://./src/css/app.css"],"names":[],"mappings":"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","sourcesContent":["html {\n  font-family: 'Roboto', sans-serif;\n  font-size: 16px;\n}\n\nbody {\n  background-color: var(--body-background-color);\n  letter-spacing: 0.5px;\n  margin-bottom: 86px;\n}\n\ninput {\n  margin: 0;\n  padding: 0;\n}\n\n.app-container {\n  border: 1px solid var(--app-border-color);\n  border-radius: 4px;\n  background-color: var(--app-background-color);\n  display: flex;\n  flex-direction: column;\n  width: 518px;\n  min-height: 593px;\n  margin: 0 auto;\n  align-items: center;\n  margin-top: 32px;\n  padding: 40px;\n}\n\n.title {\n  font-weight: 600;\n  font-size: 34px;\n  line-height: 36px;\n  margin-bottom: 32px;\n}\n\n.nav-bar {\n  display: flex;\n  flex-direction: row;\n  gap: 4px;\n}\n\n.nav-button {\n  width: 117px;\n  height: 36px;\n}\n\n.styled-button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  outline: none;\n  background: var(--button-background-color);\n  color: var(--button-text-color);\n  cursor: pointer;\n}\n\n.styled-button:hover{\n  background-color: var(--button-hover-color);\n}\n\n.styled-button.selected {\n  background: var(--button-selected-color);\n}\n\n.styled-button.emphasized {\n  background: var(--emphasized-background-color);\n  color: var(--emphasized-text-color);\n}\n\n.styled-button.emphasized:hover {\n  background: var(--emphasized-hover-color);\n}\n\n.page-container {\n  margin-top: 52px;\n}\n\n.page {\n  display: flex;\n  flex-direction: column;\n  gap: 48px;\n}\n\n.description {\n  display: block;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  letter-spacing: 0.5px;\n  margin-bottom: 4px;\n}\n\n.styled-input {\n  font-family: 'Roboto', sans-serif;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  border: 1px solid var(--input-border-color);\n  border-radius: 4px;\n  padding: 3px;\n}\n\n.styled-input::placeholder {\n  color: var(--input-placeholder-color);\n}\n\n.transparent-input {\n  font-family: 'Roboto', sans-serif;\n  font-size: 16px;\n  text-align: center;\n  width: 100%;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  letter-spacing: 0.5px;\n  padding: 0;\n  border: 0;\n}\n\n.table-title {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 20px;\n  line-height: 24px;\n  text-align: center;\n  letter-spacing: 0.15px;\n  margin-bottom: 16px;\n}\n\n.styled-table {\n  width: 100%;\n  border-top: 1px solid var(--table-border-color);\n  border-collapse: collapse;\n  text-align: center;\n}\n\n.no-border-top {\n  border-top: none;\n}\n\n.scrollable {\n  max-height: 225px;\n  overflow-y: auto;\n}\n\n.styled-th {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 16px;\n  line-height: 24px;\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\n.styled-tr {\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\n.styled-td {\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n}\n\n.dropdown {\n  margin-left: auto;\n}\n\n.user-button{\n  right: 0;\n  border: none;\n  background-color: var(--button-selected-color);\n  height: 40px;\n  width: 40px;\n  border-radius: 50%;\n  font-size: 16px;\n}\n\n.dropdown-content {\n  display: none;\n  position: absolute;\n  background-color: var(--body-background-color);\n  min-width: 160px;\n  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);\n  z-index: 1;\n}\n\n.dropdown-content a {\n  color: black;\n  padding: 12px 16px;\n  text-decoration: none;\n  display: block;\n}\n\n.dropdown-content a:hover {background-color: var(--dropdown-background-color);}\n\n.dropdown:hover .dropdown-content {\n  display: block;\n}\n\n.dropdown:hover .user-button {\n  background-color: var(--emphasized-background-color);\n}\n\n.login-button {\n  text-decoration: none; \n  outline: none;\n  background: var(--button-background-color);\n  border-radius: 4px;\n  text-align: center;\n  margin-left: auto;\n  padding: 9px 20px;\n  font-size: 16px;\n}\n\n.snackbar {\n  visibility: hidden;\n  min-width: 250px;\n  margin-left: -125px;\n  background-color: var(--snackbar-background-color);\n  color: var(--snackbar-text-color);\n  text-align: center;\n  border-radius: 2px;\n  padding: 16px;\n  position: fixed;\n  z-index: 1;\n  left: 50%;\n  bottom: 0;\n}\n\n.show {\n  visibility: visible !important;\n  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.7s;\n  animation: fadein 0.5s, fadeout 0.5s 2.7s;\n}\n\n@-webkit-keyframes fadein {\n  from {\n    bottom: 0;\n    opacity: 0;\n  }\n  to {\n    bottom: 30px;\n    opacity: 1;\n  }\n}\n\n@keyframes fadein {\n  from {\n    bottom: 0;\n    opacity: 0;\n  }\n  to {\n    bottom: 0;\n    opacity: 1;\n  }\n}\n\n@-webkit-keyframes fadeout {\n  from {\n    bottom: 0;\n    opacity: 1;\n  }\n  to {\n    bottom: -30px;\n    opacity: 0;\n  }\n}\n\n@keyframes fadeout {\n  from {\n    bottom: 0;\n    opacity: 1;\n  }\n  to {\n    bottom: -30px;\n    opacity: 0;\n  }\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "html {\n  font-family: 'Roboto', sans-serif;\n  font-size: 16px;\n}\n\nbody {\n  background-color: var(--body-background-color);\n  letter-spacing: 0.5px;\n  margin-bottom: 86px;\n}\n\ninput {\n  margin: 0;\n  padding: 0;\n}\n\n.app-container {\n  border: 1px solid var(--app-border-color);\n  border-radius: 4px;\n  background-color: var(--app-background-color);\n  display: flex;\n  flex-direction: column;\n  width: 518px;\n  min-height: 593px;\n  margin: 0 auto;\n  align-items: center;\n  margin-top: 32px;\n  padding: 40px;\n}\n\n.title {\n  font-weight: 600;\n  font-size: 34px;\n  line-height: 36px;\n  margin-bottom: 32px;\n}\n\n.nav-bar {\n  display: flex;\n  flex-direction: row;\n  gap: 4px;\n}\n\n.nav-button {\n  width: 117px;\n  height: 36px;\n}\n\n.styled-button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  outline: none;\n  background: var(--button-background-color);\n  color: var(--button-text-color);\n  cursor: pointer;\n}\n\n.styled-button:hover{\n  background-color: var(--button-hover-color);\n}\n\n.styled-button.selected {\n  background: var(--button-selected-color);\n}\n\n.styled-button.emphasized {\n  background: var(--emphasized-background-color);\n  color: var(--emphasized-text-color);\n}\n\n.styled-button.emphasized:hover {\n  background: var(--emphasized-hover-color);\n}\n\n.page-container {\n  margin-top: 52px;\n}\n\n.page {\n  display: flex;\n  flex-direction: column;\n  gap: 48px;\n}\n\n.description {\n  display: block;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  letter-spacing: 0.5px;\n  margin-bottom: 4px;\n}\n\n.styled-input {\n  font-family: 'Roboto', sans-serif;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  border: 1px solid var(--input-border-color);\n  border-radius: 4px;\n  padding: 3px;\n}\n\n.styled-input::placeholder {\n  color: var(--input-placeholder-color);\n}\n\n.transparent-input {\n  font-family: 'Roboto', sans-serif;\n  font-size: 16px;\n  text-align: center;\n  width: 100%;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  letter-spacing: 0.5px;\n  padding: 0;\n  border: 0;\n}\n\n.table-title {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 20px;\n  line-height: 24px;\n  text-align: center;\n  letter-spacing: 0.15px;\n  margin-bottom: 16px;\n}\n\n.styled-table {\n  width: 100%;\n  border-top: 1px solid var(--table-border-color);\n  border-collapse: collapse;\n  text-align: center;\n}\n\n.no-border-top {\n  border-top: none;\n}\n\n.scrollable {\n  max-height: 225px;\n  overflow-y: auto;\n}\n\n.styled-th {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 16px;\n  line-height: 24px;\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\n.styled-tr {\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\n.styled-td {\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n}\n\n.dropdown {\n  margin-left: auto;\n}\n\n.user-button{\n  right: 0;\n  border: none;\n  background-color: var(--button-selected-color);\n  height: 40px;\n  width: 40px;\n  border-radius: 50%;\n  font-size: 16px;\n}\n\n.dropdown-content {\n  display: none;\n  position: absolute;\n  background-color: var(--body-background-color);\n  min-width: 160px;\n  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);\n  z-index: 1;\n}\n\n.dropdown-content a {\n  color: black;\n  padding: 12px 16px;\n  text-decoration: none;\n  display: block;\n}\n\n.dropdown-content a:hover {background-color: var(--dropdown-background-color);}\n\n.dropdown:hover .dropdown-content {\n  display: block;\n}\n\n.dropdown:hover .user-button {\n  background-color: var(--emphasized-background-color);\n}\n\n.login-button {\n  text-decoration: none; \n  outline: none;\n  background: var(--button-background-color);\n  border-radius: 4px;\n  text-align: center;\n  margin-left: auto;\n  padding: 9px 20px;\n  font-size: 16px;\n  cursor: pointer;\n}\n\n.snackbar {\n  visibility: hidden;\n  min-width: 250px;\n  margin-left: -125px;\n  background-color: var(--snackbar-background-color);\n  color: var(--snackbar-text-color);\n  text-align: center;\n  border-radius: 2px;\n  padding: 16px;\n  position: fixed;\n  z-index: 1;\n  left: 50%;\n  bottom: 0;\n}\n\n.show {\n  visibility: visible !important;\n  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.7s;\n  animation: fadein 0.5s, fadeout 0.5s 2.7s;\n}\n\n@-webkit-keyframes fadein {\n  from {\n    bottom: 0;\n    opacity: 0;\n  }\n  to {\n    bottom: 30px;\n    opacity: 1;\n  }\n}\n\n@keyframes fadein {\n  from {\n    bottom: 0;\n    opacity: 0;\n  }\n  to {\n    bottom: 0;\n    opacity: 1;\n  }\n}\n\n@-webkit-keyframes fadeout {\n  from {\n    bottom: 0;\n    opacity: 1;\n  }\n  to {\n    bottom: -30px;\n    opacity: 0;\n  }\n}\n\n@keyframes fadeout {\n  from {\n    bottom: 0;\n    opacity: 1;\n  }\n  to {\n    bottom: -30px;\n    opacity: 0;\n  }\n}\n", "",{"version":3,"sources":["webpack://./src/css/app.css"],"names":[],"mappings":"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","sourcesContent":["html {\n  font-family: 'Roboto', sans-serif;\n  font-size: 16px;\n}\n\nbody {\n  background-color: var(--body-background-color);\n  letter-spacing: 0.5px;\n  margin-bottom: 86px;\n}\n\ninput {\n  margin: 0;\n  padding: 0;\n}\n\n.app-container {\n  border: 1px solid var(--app-border-color);\n  border-radius: 4px;\n  background-color: var(--app-background-color);\n  display: flex;\n  flex-direction: column;\n  width: 518px;\n  min-height: 593px;\n  margin: 0 auto;\n  align-items: center;\n  margin-top: 32px;\n  padding: 40px;\n}\n\n.title {\n  font-weight: 600;\n  font-size: 34px;\n  line-height: 36px;\n  margin-bottom: 32px;\n}\n\n.nav-bar {\n  display: flex;\n  flex-direction: row;\n  gap: 4px;\n}\n\n.nav-button {\n  width: 117px;\n  height: 36px;\n}\n\n.styled-button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border: none;\n  border-radius: 4px;\n  text-decoration: none;\n  outline: none;\n  background: var(--button-background-color);\n  color: var(--button-text-color);\n  cursor: pointer;\n}\n\n.styled-button:hover{\n  background-color: var(--button-hover-color);\n}\n\n.styled-button.selected {\n  background: var(--button-selected-color);\n}\n\n.styled-button.emphasized {\n  background: var(--emphasized-background-color);\n  color: var(--emphasized-text-color);\n}\n\n.styled-button.emphasized:hover {\n  background: var(--emphasized-hover-color);\n}\n\n.page-container {\n  margin-top: 52px;\n}\n\n.page {\n  display: flex;\n  flex-direction: column;\n  gap: 48px;\n}\n\n.description {\n  display: block;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  letter-spacing: 0.5px;\n  margin-bottom: 4px;\n}\n\n.styled-input {\n  font-family: 'Roboto', sans-serif;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  border: 1px solid var(--input-border-color);\n  border-radius: 4px;\n  padding: 3px;\n}\n\n.styled-input::placeholder {\n  color: var(--input-placeholder-color);\n}\n\n.transparent-input {\n  font-family: 'Roboto', sans-serif;\n  font-size: 16px;\n  text-align: center;\n  width: 100%;\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  letter-spacing: 0.5px;\n  padding: 0;\n  border: 0;\n}\n\n.table-title {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 20px;\n  line-height: 24px;\n  text-align: center;\n  letter-spacing: 0.15px;\n  margin-bottom: 16px;\n}\n\n.styled-table {\n  width: 100%;\n  border-top: 1px solid var(--table-border-color);\n  border-collapse: collapse;\n  text-align: center;\n}\n\n.no-border-top {\n  border-top: none;\n}\n\n.scrollable {\n  max-height: 225px;\n  overflow-y: auto;\n}\n\n.styled-th {\n  font-style: normal;\n  font-weight: 600;\n  font-size: 16px;\n  line-height: 24px;\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\n.styled-tr {\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\n.styled-td {\n  font-style: normal;\n  font-weight: 400;\n  font-size: 16px;\n  line-height: 24px;\n  border-bottom: 1px solid var(--table-border-color);\n  padding: 8px;\n}\n\ninput::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n}\n\n.dropdown {\n  margin-left: auto;\n}\n\n.user-button{\n  right: 0;\n  border: none;\n  background-color: var(--button-selected-color);\n  height: 40px;\n  width: 40px;\n  border-radius: 50%;\n  font-size: 16px;\n}\n\n.dropdown-content {\n  display: none;\n  position: absolute;\n  background-color: var(--body-background-color);\n  min-width: 160px;\n  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);\n  z-index: 1;\n}\n\n.dropdown-content a {\n  color: black;\n  padding: 12px 16px;\n  text-decoration: none;\n  display: block;\n}\n\n.dropdown-content a:hover {background-color: var(--dropdown-background-color);}\n\n.dropdown:hover .dropdown-content {\n  display: block;\n}\n\n.dropdown:hover .user-button {\n  background-color: var(--emphasized-background-color);\n}\n\n.login-button {\n  text-decoration: none; \n  outline: none;\n  background: var(--button-background-color);\n  border-radius: 4px;\n  text-align: center;\n  margin-left: auto;\n  padding: 9px 20px;\n  font-size: 16px;\n  cursor: pointer;\n}\n\n.snackbar {\n  visibility: hidden;\n  min-width: 250px;\n  margin-left: -125px;\n  background-color: var(--snackbar-background-color);\n  color: var(--snackbar-text-color);\n  text-align: center;\n  border-radius: 2px;\n  padding: 16px;\n  position: fixed;\n  z-index: 1;\n  left: 50%;\n  bottom: 0;\n}\n\n.show {\n  visibility: visible !important;\n  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.7s;\n  animation: fadein 0.5s, fadeout 0.5s 2.7s;\n}\n\n@-webkit-keyframes fadein {\n  from {\n    bottom: 0;\n    opacity: 0;\n  }\n  to {\n    bottom: 30px;\n    opacity: 1;\n  }\n}\n\n@keyframes fadein {\n  from {\n    bottom: 0;\n    opacity: 0;\n  }\n  to {\n    bottom: 0;\n    opacity: 1;\n  }\n}\n\n@-webkit-keyframes fadeout {\n  from {\n    bottom: 0;\n    opacity: 1;\n  }\n  to {\n    bottom: -30px;\n    opacity: 0;\n  }\n}\n\n@keyframes fadeout {\n  from {\n    bottom: 0;\n    opacity: 1;\n  }\n  to {\n    bottom: -30px;\n    opacity: 0;\n  }\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1765,7 +1814,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\n  --body-background-color: #f9f9f9;\n  --app-border-color: rgba(0, 0, 0, 0.12);\n  --app-background-color: #ffffff;\n  --button-background-color: #f5f5f5;\n  --button-selected-color: #ceecf0;\n  --button-hover-color: #B4B4B4;\n  --button-text-color: black;\n  --emphasized-background-color: #00bcd4;\n  --emphasized-hover-color: #54c5d4;\n  --emphasized-text-color: #ffffff;\n  --input-border-color: rgba(180, 180, 180, 1);\n  --input-placeholder-color: #8b8b8b;\n  --table-border-color: #dcdcdc;\n  --dropdown-background-color: #f1f1f1;\n  --snackbar-background-color: #333;\n  --snackbar-text-color: #fff;\n  --link-text-color: #3581D7;\n}\n", "",{"version":3,"sources":["webpack://./src/css/color.css"],"names":[],"mappings":"AAAA;EACE,gCAAgC;EAChC,uCAAuC;EACvC,+BAA+B;EAC/B,kCAAkC;EAClC,gCAAgC;EAChC,6BAA6B;EAC7B,0BAA0B;EAC1B,sCAAsC;EACtC,iCAAiC;EACjC,gCAAgC;EAChC,4CAA4C;EAC5C,kCAAkC;EAClC,6BAA6B;EAC7B,oCAAoC;EACpC,iCAAiC;EACjC,2BAA2B;EAC3B,0BAA0B;AAC5B","sourcesContent":[":root {\n  --body-background-color: #f9f9f9;\n  --app-border-color: rgba(0, 0, 0, 0.12);\n  --app-background-color: #ffffff;\n  --button-background-color: #f5f5f5;\n  --button-selected-color: #ceecf0;\n  --button-hover-color: #B4B4B4;\n  --button-text-color: black;\n  --emphasized-background-color: #00bcd4;\n  --emphasized-hover-color: #54c5d4;\n  --emphasized-text-color: #ffffff;\n  --input-border-color: rgba(180, 180, 180, 1);\n  --input-placeholder-color: #8b8b8b;\n  --table-border-color: #dcdcdc;\n  --dropdown-background-color: #f1f1f1;\n  --snackbar-background-color: #333;\n  --snackbar-text-color: #fff;\n  --link-text-color: #3581D7;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\n  --body-background-color: #f9f9f9;\n  --app-border-color: rgba(0, 0, 0, 0.12);\n  --app-background-color: #ffffff;\n  --button-background-color: #f5f5f5;\n  --button-selected-color: #ceecf0;\n  --button-hover-color: #B4B4B4;\n  --button-text-color: black;\n  --emphasized-background-color: #00bcd4;\n  --emphasized-hover-color: #54c5d4;\n  --emphasized-text-color: #ffffff;\n  --input-border-color: rgba(180, 180, 180, 1);\n  --input-placeholder-color: #8b8b8b;\n  --table-border-color: #dcdcdc;\n  --dropdown-background-color: #f1f1f1;\n  --snackbar-background-color: #333;\n  --snackbar-text-color: #fff;\n  --link-text-color: #3581D7;\n  --alert-text-color: red;\n}\n", "",{"version":3,"sources":["webpack://./src/css/color.css"],"names":[],"mappings":"AAAA;EACE,gCAAgC;EAChC,uCAAuC;EACvC,+BAA+B;EAC/B,kCAAkC;EAClC,gCAAgC;EAChC,6BAA6B;EAC7B,0BAA0B;EAC1B,sCAAsC;EACtC,iCAAiC;EACjC,gCAAgC;EAChC,4CAA4C;EAC5C,kCAAkC;EAClC,6BAA6B;EAC7B,oCAAoC;EACpC,iCAAiC;EACjC,2BAA2B;EAC3B,0BAA0B;EAC1B,uBAAuB;AACzB","sourcesContent":[":root {\n  --body-background-color: #f9f9f9;\n  --app-border-color: rgba(0, 0, 0, 0.12);\n  --app-background-color: #ffffff;\n  --button-background-color: #f5f5f5;\n  --button-selected-color: #ceecf0;\n  --button-hover-color: #B4B4B4;\n  --button-text-color: black;\n  --emphasized-background-color: #00bcd4;\n  --emphasized-hover-color: #54c5d4;\n  --emphasized-text-color: #ffffff;\n  --input-border-color: rgba(180, 180, 180, 1);\n  --input-placeholder-color: #8b8b8b;\n  --table-border-color: #dcdcdc;\n  --dropdown-background-color: #f1f1f1;\n  --snackbar-background-color: #333;\n  --snackbar-text-color: #fff;\n  --link-text-color: #3581D7;\n  --alert-text-color: red;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1953,7 +2002,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".register-form{\n  display: flex;\n  flex-direction: column;\n  width: 300px;\n  gap: 16px;\n}\n\n.register-input{\n  height: 28px;\n}\n\n.register-button{\n  height: 36px;\n}\n\n.register{\n  cursor: pointer;\n  color: var(--link-text-color);\n}", "",{"version":3,"sources":["webpack://./src/css/userRegisterPage.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,SAAS;AACX;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,eAAe;EACf,6BAA6B;AAC/B","sourcesContent":[".register-form{\n  display: flex;\n  flex-direction: column;\n  width: 300px;\n  gap: 16px;\n}\n\n.register-input{\n  height: 28px;\n}\n\n.register-button{\n  height: 36px;\n}\n\n.register{\n  cursor: pointer;\n  color: var(--link-text-color);\n}"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".register-form{\n  display: flex;\n  flex-direction: column;\n  width: 300px;\n  gap: 16px;\n}\n\n.register-input{\n  height: 28px;\n}\n\n.register-button{\n  height: 36px;\n}\n\n.register{\n  cursor: pointer;\n  color: var(--link-text-color);\n}\n\n.input-check-text {\n  font-size: small;\n  color: var(--alert-text-color);\n}\n", "",{"version":3,"sources":["webpack://./src/css/userRegisterPage.css"],"names":[],"mappings":"AAAA;EACE,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,SAAS;AACX;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,YAAY;AACd;;AAEA;EACE,eAAe;EACf,6BAA6B;AAC/B;;AAEA;EACE,gBAAgB;EAChB,8BAA8B;AAChC","sourcesContent":[".register-form{\n  display: flex;\n  flex-direction: column;\n  width: 300px;\n  gap: 16px;\n}\n\n.register-input{\n  height: 28px;\n}\n\n.register-button{\n  height: 36px;\n}\n\n.register{\n  cursor: pointer;\n  color: var(--link-text-color);\n}\n\n.input-check-text {\n  font-size: small;\n  color: var(--alert-text-color);\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3520,7 +3569,7 @@ var GlobalStore = /** @class */ (function () {
     };
     GlobalStore.prototype.login = function (response) {
         this.state.loginState = { isLoggedIn: true, userData: response.user };
-        (0,_utils_storageUtil__WEBPACK_IMPORTED_MODULE_1__.setData)(_constant__WEBPACK_IMPORTED_MODULE_3__.LOCALSTORAGE_KEY.USER, response);
+        (0,_utils_storageUtil__WEBPACK_IMPORTED_MODULE_1__.setCookie)(_constant__WEBPACK_IMPORTED_MODULE_3__.COOKIE_KEY.USER, JSON.stringify(response));
         this.changeLocation(_constant__WEBPACK_IMPORTED_MODULE_3__.PAGE.ITEM_PURCHASE.PATH);
     };
     GlobalStore.prototype.logout = function () {
@@ -3528,13 +3577,13 @@ var GlobalStore = /** @class */ (function () {
             isLoggedIn: false,
             userData: { email: '', id: '', name: '' }
         };
-        localStorage.removeItem(_constant__WEBPACK_IMPORTED_MODULE_3__.LOCALSTORAGE_KEY.USER);
+        (0,_utils_storageUtil__WEBPACK_IMPORTED_MODULE_1__.deleteCookie)(_constant__WEBPACK_IMPORTED_MODULE_3__.COOKIE_KEY.USER);
         this.changeLocation(_constant__WEBPACK_IMPORTED_MODULE_3__.PAGE.ITEM_PURCHASE.PATH);
     };
     return GlobalStore;
 }());
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GlobalStore);
-var userData = (0,_utils_storageUtil__WEBPACK_IMPORTED_MODULE_1__.getData)(_constant__WEBPACK_IMPORTED_MODULE_3__.LOCALSTORAGE_KEY.USER);
+var userData = (0,_utils_storageUtil__WEBPACK_IMPORTED_MODULE_1__.getCookie)(_constant__WEBPACK_IMPORTED_MODULE_3__.COOKIE_KEY.USER);
 var initialLocation = window.location.pathname;
 var globalStore = new GlobalStore({ isLoggedIn: !!userData, userData: userData === null || userData === void 0 ? void 0 : userData.user }, initialLocation);
 
@@ -3874,12 +3923,25 @@ var showSnackBar = function (message) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "setData": () => (/* binding */ setData),
-/* harmony export */   "getData": () => (/* binding */ getData)
+/* harmony export */   "getData": () => (/* binding */ getData),
+/* harmony export */   "getCookie": () => (/* binding */ getCookie),
+/* harmony export */   "setCookie": () => (/* binding */ setCookie),
+/* harmony export */   "deleteCookie": () => (/* binding */ deleteCookie)
 /* harmony export */ });
 var setData = function (key, data) {
     return localStorage.setItem(key, JSON.stringify(data));
 };
 var getData = function (key) { return JSON.parse(localStorage.getItem(key)); };
+var getCookie = function (name) {
+    var matches = document.cookie.match(new RegExp("".concat(name, "=([^;]*)")));
+    return matches ? JSON.parse(decodeURIComponent(matches[1])) : undefined;
+};
+var setCookie = function (name, value) {
+    document.cookie = "".concat(encodeURIComponent(name), "=").concat(encodeURIComponent(value));
+};
+var deleteCookie = function (name) {
+    document.cookie = "".concat(encodeURIComponent(name), "=; max-age=-1");
+};
 
 
 /***/ }),

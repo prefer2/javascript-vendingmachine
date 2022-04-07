@@ -1,4 +1,4 @@
-interface UserData {
+export interface UserData {
     email: string;
     id: string;
     name: string;
@@ -7,7 +7,7 @@ interface LoginState {
     isLoggedIn: boolean;
     userData: UserData;
 }
-interface Response {
+export interface Response {
     accessToken: string;
     user: UserData;
 }
